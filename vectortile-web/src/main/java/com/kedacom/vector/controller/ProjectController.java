@@ -123,115 +123,119 @@ public class ProjectController {
 //                resourceService.insert(resource);
                 executorService.execute(() -> {
                     //生产hamlet  geojson文件
-//                    produceHamletGeojson(projectMoudle);
-//                    //生产d  geojson文件
-//                    produceDivisionGeojson(projectMoudle);
-//                    //生产t  geojson文件
-//                    produceTextGeojson(projectMoudle);
-//                    //生产building  geojson数据
-//                    produceBuildingGeojson(projectMoudle);
-//                    //生产bp  geojson文件
-//                    produceBackgroundPolygonGeojson(projectMoudle);
-//                    //生产residential   geojson文件
-//                    produceResidentialGeojson(projectMoudle);
-//                    //生产dt   geojson文件
-//                    produceDivisionTextGeojson(projectMoudle);
-//                    //生产poi  geojson文件
-//                    producePoiGeojson(projectMoudle);
-//                    //生产r1  geojson文件
-//                    produceR1Geojson(projectMoudle);
-//                    //生产r21  geojson文件
-//                    produceR21Geojson(projectMoudle);
-//                    //生产r22  geojson文件
-//                    produceR22Geojson(projectMoudle);
+                    produceHamletGeojson(projectMoudle);
+                    //生产d  geojson文件
+                    produceDivisionGeojson(projectMoudle);
+                    //生产t  geojson文件
+                    produceTextGeojson(projectMoudle);
+                    //生产building  geojson数据
+                    produceBuildingGeojson(projectMoudle);
+                    //生产bp  geojson文件
+                    produceBackgroundPolygonGeojson(projectMoudle);
+                    //生产residential   geojson文件
+                    produceResidentialGeojson(projectMoudle);
+                    //生产dt   geojson文件
+                    produceDivisionTextGeojson(projectMoudle);
+                    //生产poi  geojson文件
+                    producePoiGeojson(projectMoudle);
+                    //生产r1  geojson文件
+                    produceR1Geojson(projectMoudle);
+                    //生产r21  geojson文件
+                    produceR21Geojson(projectMoudle);
+                    //生产r22  geojson文件
+                    produceR22Geojson(projectMoudle);
                     //生产r3  geojson文件
-//                    produceR3Geojson(projectMoudle);
-//                    log.info(provinceMap.get(projectMoudle.getAdminId()) + "省份的geojson数据生成完毕！");
+                    produceR3Geojson(projectMoudle);
+                    log.info(provinceMap.get(projectMoudle.getAdminId()) + "省份的geojson数据生成完毕！");
 
-                    //生产R1.mbtiles
-//                    log.info("生产R1.mbtiles  start");
-//                    execute("tippecanoe -o " + pathPrefix + provinceMap.get(projectMoudle.getAdminId()) + File.separator + "R1.mbtiles " +
-//                            "-Z 5 -z 20 -pk -S 10 -y Kind -y PathName -y Width -y Direction -y Kind_Level " +
-//                            pathPrefix + provinceMap.get(projectMoudle.getAdminId()) + File.separator + "R1.geojson");
-//                    log.info("生产R1.mbtiles  end");
 
-                    //生产R21mbtiles
-//                    log.info("生产R21.mbtiles  start");
-//                    execute("tippecanoe -o " + pathPrefix + provinceMap.get(projectMoudle.getAdminId()) + File.separator + "R21.mbtiles " +
-//                            "-Z 5 -z 20 -pk -pf -S 10 -y Kind -y PathName -y Width -y Direction -y Kind_Level " +
-//                            pathPrefix + provinceMap.get(projectMoudle.getAdminId()) + File.separator + "R21.geojson");
-//                    log.info("生产R21.mbtiles  end");
+                    String path = pathPrefix + provinceMap.get(projectMoudle.getAdminId()) + File.separator;
+                    if(projectMoudle.getMode().equals(1)){
+                        //生产R1.mbtiles
+                        log.info("生产R1.mbtiles  start");
+                        execute("tippecanoe -o " + path + File.separator + "R1.mbtiles " +
+                                "-Z 5 -z 17 -pk -S 10 -y Kind -y PathName -y Width -y Direction -y Kind_Level " +
+                                path + "R1.geojson");
+                        log.info("生产R1.mbtiles  end");
 
-                    //生产R22.mbtiles
-//                    log.info("生产R22.mbtiles  start");
-//                    execute("tippecanoe -o " + pathPrefix + provinceMap.get(projectMoudle.getAdminId()) + File.separator + "R22.mbtiles " +
-//                            "-Z 5 -z 20 -pk -pf -S 10 -y Kind -y PathName -y Width -y Direction -y Kind_Level " +
-//                            pathPrefix + provinceMap.get(projectMoudle.getAdminId()) + File.separator + "R22.geojson");
-//                    log.info("生产R22.mbtiles  end");
+                        //生产R21mbtiles
+                        log.info("生产R21.mbtiles  start");
+                        execute("tippecanoe -o " + path + "R21.mbtiles " +
+                                "-Z 10 -z 17 -pk -pf -S 10 -y Kind -y PathName -y Width -y Direction -y Kind_Level " +
+                                path + "R21.geojson");
+                        log.info("生产R21.mbtiles  end");
 
-                    //生产R3.mbtiles
-                    log.info("生产R3.mbtiles  start");
-                    execute("tippecanoe -o " + pathPrefix + provinceMap.get(projectMoudle.getAdminId()) + File.separator + "R3.mbtiles " +
-                            "-Z 9 -z 20 -pk -pf -S 10 -y Kind -y PathName -y Width -y Direction -y Kind_Level " +
-                            pathPrefix + provinceMap.get(projectMoudle.getAdminId()) + File.separator + "R3.geojson");
-                    log.info("生产R3.mbtiles  end");
+                        //生产R22.mbtiles
+                        log.info("生产R22.mbtiles  start");
+                        execute("tippecanoe -o " + path + "R22.mbtiles " +
+                                "-Z 12 -z 17 -pk -pf -S 10 -y Kind -y PathName -y Width -y Direction -y Kind_Level " +
+                                path + "R22.geojson");
+                        log.info("生产R22.mbtiles  end");
 
-                    //生产POI.mbtiles
-                    log.info("生产POI.mbtiles  start");
-                    execute("tippecanoe -o " + pathPrefix + provinceMap.get(projectMoudle.getAdminId()) + File.separator + "POI.mbtiles " +
-                            "-Z 10 -z 20 -y Kind -y Display_x -y Display_y -y Name -y AdminCode " +
-                            pathPrefix + provinceMap.get(projectMoudle.getAdminId()) + File.separator + "POI.geojson");
-                    log.info("生产POI.mbtiles  end");
+                        //生产R3.mbtiles
+                        log.info("生产R3.mbtiles  start");
+                        execute("tippecanoe -o " + path + "R3.mbtiles " +
+                                "-Z 15 -z 17 -pk -pf -S 10 -y Kind -y PathName -y Width -y Direction -y Kind_Level " +
+                                path + "R3.geojson");
+                        log.info("生产R3.mbtiles  end");
 
-                    //生产Buildings.mbtiles
-//                    log.info("生产Buildings.mbtiles  start");
-//                    execute("tippecanoe -o " + pathPrefix + provinceMap.get(projectMoudle.getAdminId()) + File.separator + "Buildings.mbtiles " +
-//                            "-Z 15 -z 19 " +
-//                            pathPrefix + provinceMap.get(projectMoudle.getAdminId()) + File.separator + "Building.geojson");
-//                    log.info("生产Buildings.mbtiles  end");
+                        //生产POI.mbtiles
+                        log.info("生产POI.mbtiles  start");
+                        execute("tippecanoe -o " + path + "POI.mbtiles " +
+                                "-Z 10 -z 17 -y Kind -y Display_x -y Display_y -y Name -y AdminCode " +
+                                path + "POI.geojson");
+                        log.info("生产POI.mbtiles  end");
 
-                    //生产Residential.mbtiles
-//                    log.info("生产Residential.mbtiles  start");
-//                    execute("tippecanoe -o " + pathPrefix + provinceMap.get(projectMoudle.getAdminId()) + File.separator + "Residential.mbtiles " +
-//                            "-Z 15 -z 19 " +
-//                            pathPrefix + provinceMap.get(projectMoudle.getAdminId()) + File.separator + "Residential.geojson");
-//                    log.info("生产Residential.mbtiles  end");
+                        //生产Buildings.mbtiles
+                        log.info("生产Buildings.mbtiles  start");
+                        execute("tippecanoe -o " + path + "Buildings.mbtiles " +
+                                "-Z 15 -z 17 " +
+                                path + "Building.geojson");
+                        log.info("生产Buildings.mbtiles  end");
 
-                    //生产Hamlet.mbtiles
-//                    log.info("生产Hamlet.mbtiles  start");
-//                    execute("tippecanoe -o " + pathPrefix + provinceMap.get(projectMoudle.getAdminId()) + File.separator + "Hamlet.mbtiles " +
-//                            "-Z 5 -z 10 " +
-//                            pathPrefix + provinceMap.get(projectMoudle.getAdminId()) + File.separator + "Hamlet.geojson");
-//                    log.info("生产Hamlet.mbtiles  end");
+                        //生产Residential.mbtiles
+                        log.info("生产Residential.mbtiles  start");
+                        execute("tippecanoe -o " + path + "Residential.mbtiles " +
+                                "-Z 15 -z 17 " +
+                                path + "Residential.geojson");
+                        log.info("生产Residential.mbtiles  end");
 
-                    //生产T.mbtiles
-                    log.info("生产T.mbtiles  start");
-                    execute("tippecanoe -o " + pathPrefix + provinceMap.get(projectMoudle.getAdminId()) + File.separator + "T.mbtiles " +
-                            "-Z 4 -z 20 -pk -y Kind -y Name -y AdminCode -y ID -y Class " +
-                            pathPrefix + provinceMap.get(projectMoudle.getAdminId()) + File.separator + "T.geojson");
-                    log.info("生产T.mbtiles  end");
+                        //生产Hamlet.mbtiles
+                        log.info("生产Hamlet.mbtiles  start");
+                        execute("tippecanoe -o " + path + "Hamlet.mbtiles " +
+                                "-Z 5 -z 10 " +
+                                path + "Hamlet.geojson");
+                        log.info("生产Hamlet.mbtiles  end");
 
-                    //生产DT.mbtiles
-//                    log.info("生产DT.mbtiles  start");
-//                    execute("tippecanoe -o " + pathPrefix + provinceMap.get(projectMoudle.getAdminId()) + File.separator + "DT.mbtiles " +
-//                            "-Z 3 -z 10 " +
-//                            pathPrefix + provinceMap.get(projectMoudle.getAdminId()) + File.separator + "DT.geojson");
-//                    log.info("生产DT.mbtiles  end");
+                        //生产T.mbtiles
+                        log.info("生产T.mbtiles  start");
+                        execute("tippecanoe -o " + path + "T.mbtiles " +
+                                "-Z 5 -z 17 -pk -y Kind -y Name -y AdminCode -y ID -y Class " +
+                                path + "T.geojson");
+                        log.info("生产T.mbtiles  end");
 
-                    //生产BP.mbtiles
-                    log.info("生产BP.mbtiles  start");
-                    execute("tippecanoe -o " + pathPrefix + provinceMap.get(projectMoudle.getAdminId()) + File.separator + "BP.mbtiles " +
-                            "-Z 3 -z 20 -pk -pf -S 10 " +
-                            pathPrefix + provinceMap.get(projectMoudle.getAdminId()) + File.separator + "BP.geojson");
-                    log.info("生产BP.mbtiles  end");
+                        //生产DT.mbtiles
+                        log.info("生产DT.mbtiles  start");
+                        execute("tippecanoe -o " + path + "DT.mbtiles " +
+                                "-Z 5 -z 7 " +
+                                path + "DT.geojson");
+                        log.info("生产DT.mbtiles  end");
 
-                    //生产D.mbtiles
-                    log.info("生产D.mbtiles  start");
-                    execute("tippecanoe -o " + pathPrefix + provinceMap.get(projectMoudle.getAdminId()) + File.separator + "D.mbtiles " +
-                            "-Z 3 -z 20 -pk -pf -S 10 " +
-                            pathPrefix + provinceMap.get(projectMoudle.getAdminId()) + File.separator + "D.geojson");
-                    log.info("生产D.mbtiles  end");
-                    log.info("mbtiles生产完毕！");
+                        //生产BP.mbtiles
+                        log.info("生产BP.mbtiles  start");
+                        execute("tippecanoe -o " + path + "BP.mbtiles " +
+                                "-Z 5 -z 17 -pk -pf -S 10 " +
+                                path + "BP.geojson");
+                        log.info("生产BP.mbtiles  end");
+
+                        //生产D.mbtiles
+                        log.info("生产D.mbtiles  start");
+                        execute("tippecanoe -o " + path + "D.mbtiles " +
+                                "-Z 5 -z 17 -pk -pf -S 10 " +
+                                path + "D.geojson");
+                        log.info("生产D.mbtiles  end");
+                        log.info("mbtiles生产完毕！");
+                    }
                     //开始压缩数据
 //                    log.info("压缩数据  start");
 //                    execute("zip -r -7 -q -o " + pathPrefix + provinceMap.get(projectMoudle.getAdminId()) + ".zip "

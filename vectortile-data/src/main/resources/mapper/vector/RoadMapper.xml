@@ -200,7 +200,7 @@
       from
         ${tableName}
       where
-        kind like '09%' or kind LIKE '0a%' or kind like '0b%' or kind LIKE '0c%' or kind LIKE '0d%'
+        kind like '08%' or kind like '09%' or kind LIKE '0a%' or kind like '0b%' or kind LIKE '0c%' or kind LIKE '0d%'
       order by
         gid,route_id
       limit ${pageSize} offset ${offset}
@@ -272,7 +272,7 @@
       from
         ${tableName}
       where
-        kind LIKE '06%' or kind like '08%'
+        kind LIKE '06%'
       order by
         gid,route_id
       limit ${pageSize} offset ${offset}
@@ -435,11 +435,11 @@
     </select>
 
     <select id="countR22" parameterType="java.lang.String" resultType="java.lang.Integer">
-        select count(1) from ${tableName} where kind LIKE '06%' or kind like '08%'
+        select count(1) from ${tableName} where kind LIKE '06%'
     </select>
 
     <select id="countR3" parameterType="java.lang.String" resultType="java.lang.Integer">
-        select count(1) from ${tableName} where  kind like '09%' or kind LIKE '0a%' or kind like '0b%' or kind LIKE '0c%' or kind LIKE '0d%'
+        select count(1) from ${tableName} where kind like '08%' or kind like '09%' or kind LIKE '0a%' or kind like '0b%' or kind LIKE '0c%' or kind LIKE '0d%'
     </select>
 
     <insert id="insertRoadList">

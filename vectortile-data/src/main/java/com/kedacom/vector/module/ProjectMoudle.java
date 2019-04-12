@@ -45,4 +45,10 @@ public class ProjectMoudle {
      */
     @NotNull(message = "loadStyle为空，必须选择加载样式")
     private Integer loadStyle;
+
+    /**
+     * 是否生产mbtiles,0 不生产mbtiles，只生产geojson     1 生产mbtiles和geojson
+     */
+    @NotNull(message = "mode为空，必须填写mode")
+    private Integer mode;
 }
