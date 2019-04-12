@@ -43,8 +43,23 @@ public class RoadServiceImpl extends ServiceImpl<RoadMapper, Road> implements IR
     }
 
     @Override
-    public List<Road> queryR3List(String tableName, Integer pageSize, Integer pageNo) {
-        return roadMapper.queryR3List(tableName,pageSize,pageNo * pageSize);
+    public List<Road> queryR31List(String tableName, Integer pageSize, Integer pageNo) {
+        return roadMapper.queryR31List(tableName,pageSize,pageNo * pageSize);
+    }
+
+    @Override
+    public List<Road> queryR32List(String tableName, Integer pageSize, Integer pageNo) {
+        return roadMapper.queryR32List(tableName,pageSize,pageNo * pageSize);
+    }
+
+    @Override
+    public List<Road> queryR33List(String tableName, Integer pageSize, Integer pageNo) {
+        return roadMapper.queryR33List(tableName,pageSize,pageNo * pageSize);
+    }
+
+    @Override
+    public List<Road> queryR34List(String tableName, Integer pageSize, Integer pageNo) {
+        return roadMapper.queryR34List(tableName,pageSize,pageNo * pageSize);
     }
 
     @Override
@@ -78,7 +93,22 @@ public class RoadServiceImpl extends ServiceImpl<RoadMapper, Road> implements IR
     }
 
     @Override
-    public Integer countR3(String tableName) {
-        return roadMapper.countR3(tableName);
+    public Integer countR31(String tableName) {
+        return roadMapper.countR31(tableName);
+    }
+
+    @Override
+    public Integer countR32(String tableName) {
+        return roadMapper.countR32(tableName);
+    }
+
+    @Override
+    public Integer countR33(String tableName) {
+        return roadMapper.countR33(tableName);
+    }
+
+    @Override
+    public Integer countR34(String tableName) {
+        return roadMapper.countR34(tableName);
     }
 }

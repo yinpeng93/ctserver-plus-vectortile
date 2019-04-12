@@ -144,8 +144,14 @@ public class ProjectController {
                     produceR21Geojson(projectMoudle);
                     //生产r22  geojson文件
                     produceR22Geojson(projectMoudle);
-                    //生产r3  geojson文件
-                    produceR3Geojson(projectMoudle);
+                    //生产r31  geojson文件
+                    produceR31Geojson(projectMoudle);
+                    //生产r32  geojson文件
+                    produceR32Geojson(projectMoudle);
+                    //生产r33  geojson文件
+                    produceR33Geojson(projectMoudle);
+                    //生产r34  geojson文件
+                    produceR34Geojson(projectMoudle);
                     log.info(provinceMap.get(projectMoudle.getAdminId()) + "省份的geojson数据生成完毕！");
 
 
@@ -175,13 +181,37 @@ public class ProjectController {
                                 path + "R22.geojson");
                         log.info("生产R22.mbtiles  end");
 
-                        //生产R3.mbtiles
-                        log.info("生产R3.mbtiles  start");
-                        execute("tippecanoe -o " + path + "R3.mbtiles " +
-                                "-Z " + projectMoudle.getR3ZoomLevel().get(0) + " -z " + projectMoudle.getR3ZoomLevel().get(1)
+                        //生产R31.mbtiles
+                        log.info("生产R31.mbtiles  start");
+                        execute("tippecanoe -o " + path + "R31.mbtiles " +
+                                "-Z " + projectMoudle.getR31ZoomLevel().get(0) + " -z " + projectMoudle.getR31ZoomLevel().get(1)
                                 + " -pk -pf -S 10 -y Kind -y PathName -y Width -y Direction -y Kind_Level " +
-                                path + "R3.geojson");
-                        log.info("生产R3.mbtiles  end");
+                                path + "R31.geojson");
+                        log.info("生产R31.mbtiles  end");
+
+                        //生产R32.mbtiles
+                        log.info("生产R32.mbtiles  start");
+                        execute("tippecanoe -o " + path + "R32.mbtiles " +
+                                "-Z " + projectMoudle.getR32ZoomLevel().get(0) + " -z " + projectMoudle.getR32ZoomLevel().get(1)
+                                + " -pk -pf -S 10 -y Kind -y PathName -y Width -y Direction -y Kind_Level " +
+                                path + "R32.geojson");
+                        log.info("生产R32.mbtiles  end");
+
+                        //生产R33.mbtiles
+                        log.info("生产R33.mbtiles  start");
+                        execute("tippecanoe -o " + path + "R33.mbtiles " +
+                                "-Z " + projectMoudle.getR33ZoomLevel().get(0) + " -z " + projectMoudle.getR33ZoomLevel().get(1)
+                                + " -pk -pf -S 10 -y Kind -y PathName -y Width -y Direction -y Kind_Level " +
+                                path + "R33.geojson");
+                        log.info("生产R33.mbtiles  end");
+
+                        //生产R34.mbtiles
+                        log.info("生产R34.mbtiles  start");
+                        execute("tippecanoe -o " + path + "R34.mbtiles " +
+                                "-Z " + projectMoudle.getR34ZoomLevel().get(0) + " -z " + projectMoudle.getR34ZoomLevel().get(1)
+                                + " -pk -pf -S 10 -y Kind -y PathName -y Width -y Direction -y Kind_Level " +
+                                path + "R34.geojson");
+                        log.info("生产R34.mbtiles  end");
 
                         //生产POI.mbtiles
                         log.info("生产POI.mbtiles  start");
@@ -610,13 +640,9 @@ public class ProjectController {
     }
 
 
-    /**
-     * 生产r3   geojson文件
-     * @param projectMoudle
-     */
-    private void produceR3Geojson(ProjectMoudle projectMoudle) {
+    private void produceR34Geojson(ProjectMoudle projectMoudle) {
         Long start = System.currentTimeMillis();
-        Integer countPoi = roadService.countR3(provinceMap.get(projectMoudle.getAdminId()) + ROAD_SUFFIX);
+        Integer countPoi = roadService.countR34(provinceMap.get(projectMoudle.getAdminId()) + ROAD_SUFFIX);
         Long end = System.currentTimeMillis();
         log.info("查询总数耗时：" + (end - start)/1000.0 + "s");
         Integer pages = getPages(countPoi,PAGE_SIZE);
@@ -629,7 +655,7 @@ public class ProjectController {
                 lastPage = true;
             }
             start = System.currentTimeMillis();
-            List<Road> roadList = roadService.queryR3List(provinceMap.get(projectMoudle.getAdminId()) + ROAD_SUFFIX,PAGE_SIZE,pageNo);
+            List<Road> roadList = roadService.queryR34List(provinceMap.get(projectMoudle.getAdminId()) + ROAD_SUFFIX,PAGE_SIZE,pageNo);
             end = System.currentTimeMillis();
             log.info("查询第" + (pageNo + 1) + "页，耗时：" + (end - start) / 1000.0 + "s");
             List<Feature> features = new ArrayList<>();
@@ -637,7 +663,101 @@ public class ProjectController {
             setFeatures(roadList,features,i);
             i = i + PAGE_SIZE;
             start = System.currentTimeMillis();
-            createFile("R3",features,lastPage,path);
+            createFile("R34",features,lastPage,path);
+            end = System.currentTimeMillis();
+            log.info("写第" + (pageNo + 1) + "页，耗时：" + (end -start)/1000.0 + "s");
+            pageNo++;
+        }
+    }
+
+    private void produceR33Geojson(ProjectMoudle projectMoudle) {
+        Long start = System.currentTimeMillis();
+        Integer countPoi = roadService.countR33(provinceMap.get(projectMoudle.getAdminId()) + ROAD_SUFFIX);
+        Long end = System.currentTimeMillis();
+        log.info("查询总数耗时：" + (end - start)/1000.0 + "s");
+        Integer pages = getPages(countPoi,PAGE_SIZE);
+        Integer pageNo = 0;
+        boolean lastPage = false; //是否最后一页
+        String path = pathPrefix + provinceMap.get(projectMoudle.getAdminId()) + File.separator;
+        int i = 0;
+        while (pageNo < pages){
+            if(pageNo == pages - 1){
+                lastPage = true;
+            }
+            start = System.currentTimeMillis();
+            List<Road> roadList = roadService.queryR33List(provinceMap.get(projectMoudle.getAdminId()) + ROAD_SUFFIX,PAGE_SIZE,pageNo);
+            end = System.currentTimeMillis();
+            log.info("查询第" + (pageNo + 1) + "页，耗时：" + (end - start) / 1000.0 + "s");
+            List<Feature> features = new ArrayList<>();
+
+            setFeatures(roadList,features,i);
+            i = i + PAGE_SIZE;
+            start = System.currentTimeMillis();
+            createFile("R33",features,lastPage,path);
+            end = System.currentTimeMillis();
+            log.info("写第" + (pageNo + 1) + "页，耗时：" + (end -start)/1000.0 + "s");
+            pageNo++;
+        }
+    }
+
+    private void produceR32Geojson(ProjectMoudle projectMoudle) {
+        Long start = System.currentTimeMillis();
+        Integer countPoi = roadService.countR32(provinceMap.get(projectMoudle.getAdminId()) + ROAD_SUFFIX);
+        Long end = System.currentTimeMillis();
+        log.info("查询总数耗时：" + (end - start)/1000.0 + "s");
+        Integer pages = getPages(countPoi,PAGE_SIZE);
+        Integer pageNo = 0;
+        boolean lastPage = false; //是否最后一页
+        String path = pathPrefix + provinceMap.get(projectMoudle.getAdminId()) + File.separator;
+        int i = 0;
+        while (pageNo < pages){
+            if(pageNo == pages - 1){
+                lastPage = true;
+            }
+            start = System.currentTimeMillis();
+            List<Road> roadList = roadService.queryR32List(provinceMap.get(projectMoudle.getAdminId()) + ROAD_SUFFIX,PAGE_SIZE,pageNo);
+            end = System.currentTimeMillis();
+            log.info("查询第" + (pageNo + 1) + "页，耗时：" + (end - start) / 1000.0 + "s");
+            List<Feature> features = new ArrayList<>();
+
+            setFeatures(roadList,features,i);
+            i = i + PAGE_SIZE;
+            start = System.currentTimeMillis();
+            createFile("R32",features,lastPage,path);
+            end = System.currentTimeMillis();
+            log.info("写第" + (pageNo + 1) + "页，耗时：" + (end -start)/1000.0 + "s");
+            pageNo++;
+        }
+    }
+
+    /**
+     * 生产r3   geojson文件
+     * @param projectMoudle
+     */
+    private void produceR31Geojson(ProjectMoudle projectMoudle) {
+        Long start = System.currentTimeMillis();
+        Integer countPoi = roadService.countR31(provinceMap.get(projectMoudle.getAdminId()) + ROAD_SUFFIX);
+        Long end = System.currentTimeMillis();
+        log.info("查询总数耗时：" + (end - start)/1000.0 + "s");
+        Integer pages = getPages(countPoi,PAGE_SIZE);
+        Integer pageNo = 0;
+        boolean lastPage = false; //是否最后一页
+        String path = pathPrefix + provinceMap.get(projectMoudle.getAdminId()) + File.separator;
+        int i = 0;
+        while (pageNo < pages){
+            if(pageNo == pages - 1){
+                lastPage = true;
+            }
+            start = System.currentTimeMillis();
+            List<Road> roadList = roadService.queryR31List(provinceMap.get(projectMoudle.getAdminId()) + ROAD_SUFFIX,PAGE_SIZE,pageNo);
+            end = System.currentTimeMillis();
+            log.info("查询第" + (pageNo + 1) + "页，耗时：" + (end - start) / 1000.0 + "s");
+            List<Feature> features = new ArrayList<>();
+
+            setFeatures(roadList,features,i);
+            i = i + PAGE_SIZE;
+            start = System.currentTimeMillis();
+            createFile("R31",features,lastPage,path);
             end = System.currentTimeMillis();
             log.info("写第" + (pageNo + 1) + "页，耗时：" + (end -start)/1000.0 + "s");
             pageNo++;

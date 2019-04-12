@@ -30,9 +30,21 @@ public interface RoadMapper extends BaseMapper<Road> {
                         @Param("prefixAdminCode") String prefixAdminCode,
                         @Param("prefixAdminCodeDelete") String prefixAdminCodeDelete);
 
-    List<Road> queryR3List(@Param("tableName") String tableName,
+    List<Road> queryR31List(@Param("tableName") String tableName,
                            @Param("pageSize") Integer pageSize,
                            @Param("offset") Integer offset);
+
+    List<Road> queryR32List(@Param("tableName") String tableName,
+                            @Param("pageSize") Integer pageSize,
+                            @Param("offset") Integer offset);
+
+    List<Road> queryR33List(@Param("tableName") String tableName,
+                            @Param("pageSize") Integer pageSize,
+                            @Param("offset") Integer offset);
+
+    List<Road> queryR34List(@Param("tableName") String tableName,
+                            @Param("pageSize") Integer pageSize,
+                            @Param("offset") Integer offset);
 
     List<Road> queryR22List(@Param("tableName") String tableName,
                             @Param("pageSize") Integer pageSize,
@@ -52,5 +64,11 @@ public interface RoadMapper extends BaseMapper<Road> {
 
     Integer countR22(@Param("tableName") String tableName);
 
-    Integer countR3(@Param("tableName") String tableName);
+    Integer countR31(@Param("tableName") String tableName);
+
+    Integer countR32(@Param("tableName") String tableName);
+
+    Integer countR33(@Param("tableName") String tableName);
+
+    Integer countR34(@Param("tableName") String tableName);
 }

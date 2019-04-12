@@ -134,7 +134,7 @@
         gid limit ${pageSize} offset ${offset}
     </select>
 
-    <select id="queryR3List" resultMap="BaseResultMap">
+    <select id="queryR31List" resultMap="BaseResultMap">
       select
         gid,
         mapid,
@@ -200,7 +200,223 @@
       from
         ${tableName}
       where
-        kind like '08%' or kind like '09%' or kind LIKE '0a%' or kind like '0b%' or kind LIKE '0c%' or kind LIKE '0d%'
+        kind like '08%'
+      order by
+        gid,route_id
+      limit ${pageSize} offset ${offset}
+    </select>
+
+    <select id="queryR32List" resultMap="BaseResultMap">
+      select
+        gid,
+        mapid,
+        id,
+        kind_num,
+        kind,
+        width,
+        direction,
+        toll,
+        const_st,
+        unconcrid,
+        snodeid,
+        enodeid,
+        funcclass,
+        length,
+        detailcity,
+        through,
+        unthrucrid,
+        ownership,
+        road_cond,
+        special,
+        admincodel,
+        admincoder,
+        uflag,
+        onewaycrid,
+        accesscrid,
+        speedclass,
+        lanenums2e,
+        lanenume2s,
+        lanenum,
+        vehcl_type,
+        elevated,
+        structure,
+        usefeecrid,
+        usefeetype,
+        spdlmts2e,
+        spdlmte2s,
+        spdsrcs2e,
+        spdsrce2s,
+        dc_type,
+        nopasscrid,
+        outbancrid,
+        numbancrid,
+        parkflag,
+        phylanes2e,
+        phtlanee2s,
+        st_asgeojson(geom) as geom,
+        route_id,
+        route_kind,
+        pathname,
+        pathpy,
+        prename,
+        prepy,
+        basename,
+        basepy,
+        sttpname,
+        sttppy,
+        surname,
+        surpy,
+        wavname,
+        language,
+        sttploc
+      from
+        ${tableName}
+      where
+        kind like '09%'
+      order by
+        gid,route_id
+      limit ${pageSize} offset ${offset}
+    </select>
+
+    <select id="queryR33List" resultMap="BaseResultMap">
+      select
+        gid,
+        mapid,
+        id,
+        kind_num,
+        kind,
+        width,
+        direction,
+        toll,
+        const_st,
+        unconcrid,
+        snodeid,
+        enodeid,
+        funcclass,
+        length,
+        detailcity,
+        through,
+        unthrucrid,
+        ownership,
+        road_cond,
+        special,
+        admincodel,
+        admincoder,
+        uflag,
+        onewaycrid,
+        accesscrid,
+        speedclass,
+        lanenums2e,
+        lanenume2s,
+        lanenum,
+        vehcl_type,
+        elevated,
+        structure,
+        usefeecrid,
+        usefeetype,
+        spdlmts2e,
+        spdlmte2s,
+        spdsrcs2e,
+        spdsrce2s,
+        dc_type,
+        nopasscrid,
+        outbancrid,
+        numbancrid,
+        parkflag,
+        phylanes2e,
+        phtlanee2s,
+        st_asgeojson(geom) as geom,
+        route_id,
+        route_kind,
+        pathname,
+        pathpy,
+        prename,
+        prepy,
+        basename,
+        basepy,
+        sttpname,
+        sttppy,
+        surname,
+        surpy,
+        wavname,
+        language,
+        sttploc
+      from
+        ${tableName}
+      where
+        kind LIKE '0a%'
+      order by
+        gid,route_id
+      limit ${pageSize} offset ${offset}
+    </select>
+
+    <select id="queryR34List" resultMap="BaseResultMap">
+      select
+        gid,
+        mapid,
+        id,
+        kind_num,
+        kind,
+        width,
+        direction,
+        toll,
+        const_st,
+        unconcrid,
+        snodeid,
+        enodeid,
+        funcclass,
+        length,
+        detailcity,
+        through,
+        unthrucrid,
+        ownership,
+        road_cond,
+        special,
+        admincodel,
+        admincoder,
+        uflag,
+        onewaycrid,
+        accesscrid,
+        speedclass,
+        lanenums2e,
+        lanenume2s,
+        lanenum,
+        vehcl_type,
+        elevated,
+        structure,
+        usefeecrid,
+        usefeetype,
+        spdlmts2e,
+        spdlmte2s,
+        spdsrcs2e,
+        spdsrce2s,
+        dc_type,
+        nopasscrid,
+        outbancrid,
+        numbancrid,
+        parkflag,
+        phylanes2e,
+        phtlanee2s,
+        st_asgeojson(geom) as geom,
+        route_id,
+        route_kind,
+        pathname,
+        pathpy,
+        prename,
+        prepy,
+        basename,
+        basepy,
+        sttpname,
+        sttppy,
+        surname,
+        surpy,
+        wavname,
+        language,
+        sttploc
+      from
+        ${tableName}
+      where
+        kind like '0b%' or kind LIKE '0d%'
       order by
         gid,route_id
       limit ${pageSize} offset ${offset}
@@ -438,8 +654,20 @@
         select count(1) from ${tableName} where kind LIKE '06%'
     </select>
 
-    <select id="countR3" parameterType="java.lang.String" resultType="java.lang.Integer">
-        select count(1) from ${tableName} where kind like '08%' or kind like '09%' or kind LIKE '0a%' or kind like '0b%' or kind LIKE '0c%' or kind LIKE '0d%'
+    <select id="countR31" parameterType="java.lang.String" resultType="java.lang.Integer">
+        select count(1) from ${tableName} where kind like '08%'
+    </select>
+
+    <select id="countR32" parameterType="java.lang.String" resultType="java.lang.Integer">
+        select count(1) from ${tableName} where kind like '09%'
+    </select>
+
+    <select id="countR33" parameterType="java.lang.String" resultType="java.lang.Integer">
+        select count(1) from ${tableName} where kind LIKE '0a%'
+    </select>
+
+    <select id="countR34" parameterType="java.lang.String" resultType="java.lang.Integer">
+        select count(1) from ${tableName} where kind like '0b%' or kind LIKE '0d%'
     </select>
 
     <insert id="insertRoadList">

@@ -22,13 +22,19 @@ public interface IRoadService extends IService<Road> {
 
     void deleteRoadList(String tableName, String prefixAdminCode,String prefixAdminCodeDelete);
 
-    List<Road> queryR3List(String tableName, Integer pageSize, Integer pageNo);
-
     List<Road> queryR22List(String tableName, Integer pageSize, Integer pageNo);
 
     List<Road> queryR21List(String tableName, Integer pageSize, Integer pageNo);
 
     List<Road> queryR1List(String tableName, Integer pageSize, Integer pageNo);
+
+    List<Road> queryR31List(String tableName, Integer pageSize, Integer pageNo);
+
+    List<Road> queryR32List(String tableName, Integer pageSize, Integer pageNo);
+
+    List<Road> queryR33List(String tableName, Integer pageSize, Integer pageNo);
+
+    List<Road> queryR34List(String tableName, Integer pageSize, Integer pageNo);
 
     Integer countR1(String tableName);
 
@@ -36,5 +42,13 @@ public interface IRoadService extends IService<Road> {
 
     Integer countR22(String tableName);
 
-    Integer countR3(String tableName);
+    Integer countR31(String tableName);
+
+    Integer countR32(String tableName);
+
+    Integer countR33(String tableName);
+
+    Integer countR34(String tableName);
+
+
 }

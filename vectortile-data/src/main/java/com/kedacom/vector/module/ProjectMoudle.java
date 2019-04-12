@@ -56,25 +56,34 @@ public class ProjectMoudle {
     private Integer mode;
 
     @Size(min = 2,max = 2,message = "r1ZoomLevel是r1的区间，由两个integer类型值框定区间")
-    private List r1ZoomLevel = Arrays.asList(5,17);
+    private List r1ZoomLevel = Arrays.asList(5,19);
 
     @Size(min = 2,max = 2,message = "r21ZoomLevel是r21的区间，由两个integer类型值框定区间")
-    private List r21ZoomLevel = Arrays.asList(10,17);
+    private List r21ZoomLevel = Arrays.asList(10,19);
 
     @Size(min = 2,max = 2,message = "r22ZoomLevel是r22的区间，由两个integer类型值框定区间")
-    private List r22ZoomLevel = Arrays.asList(12,17);
+    private List r22ZoomLevel = Arrays.asList(12,19);
 
-    @Size(min = 2,max = 2,message = "r3ZoomLevel是r3的区间，由两个integer类型值框定区间")
-    private List r3ZoomLevel = Arrays.asList(15,17);
+    @Size(min = 2,max = 2,message = "r31ZoomLevel是r31的区间，由两个integer类型值框定区间")
+    private List r31ZoomLevel = Arrays.asList(15,19);
+
+    @Size(min = 2,max = 2,message = "r32ZoomLevel是r32的区间，由两个integer类型值框定区间")
+    private List r32ZoomLevel = Arrays.asList(15,19);
+
+    @Size(min = 2,max = 2,message = "r33ZoomLevel是r33的区间，由两个integer类型值框定区间")
+    private List r33ZoomLevel = Arrays.asList(15,19);
+
+    @Size(min = 2,max = 2,message = "r34ZoomLevel是r34的区间，由两个integer类型值框定区间")
+    private List r34ZoomLevel = Arrays.asList(15,19);
 
     @Size(min = 2,max = 2,message = "poiZoomLevell是poi的区间，由两个integer类型值框定区间")
-    private List poiZoomLevel = Arrays.asList(10,17);
+    private List poiZoomLevel = Arrays.asList(10,19);
 
     @Size(min = 2,max = 2,message = "buildingZoomLevel是building的区间，由两个integer类型值框定区间")
-    private List buildingZoomLevel = Arrays.asList(15,17);
+    private List buildingZoomLevel = Arrays.asList(15,19);
 
     @Size(min = 2,max = 2,message = "residentialZoomLevel是residential的区间，由两个integer类型值框定区间")
-    private List residentialZoomLevel = Arrays.asList(15,17);
+    private List residentialZoomLevel = Arrays.asList(15,19);
 
     @Size(min = 2,max = 2,message = "tZoomLevel是t的区间，由两个integer类型值框定区间")
     private List tZoomLevel = Arrays.asList(5,17);
@@ -83,10 +92,10 @@ public class ProjectMoudle {
     private List dtZoomLevel = Arrays.asList(5,7);
 
     @Size(min = 2,max = 2,message = "bpZoomLevel是bp的区间，由两个integer类型值框定区间")
-    private List bpZoomLevel = Arrays.asList(5,17);
+    private List bpZoomLevel = Arrays.asList(5,19);
 
     @Size(min = 2,max = 2,message = "dZoomLevel是d的区间，由两个integer类型值框定区间")
-    private List dZoomLevel = Arrays.asList(5,17);
+    private List dZoomLevel = Arrays.asList(5,19);
 
     @Size(min = 2,max = 2,message = "hamletZoomLevel是hamlet的区间，由两个integer类型值框定区间")
     private List hamletZoomLevel = Arrays.asList(5,10);
