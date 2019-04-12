@@ -154,84 +154,90 @@ public class ProjectController {
                         //生产R1.mbtiles
                         log.info("生产R1.mbtiles  start");
                         execute("tippecanoe -o " + path + File.separator + "R1.mbtiles " +
-                                "-Z 5 -z 17 -pk -S 10 -y Kind -y PathName -y Width -y Direction -y Kind_Level " +
+                                "-Z " + projectMoudle.getR1ZoomLevel().get(0) + " -z "+ projectMoudle.getR1ZoomLevel().get(1)
+                                + " -pk -S 10 -y Kind -y PathName -y Width -y Direction -y Kind_Level " +
                                 path + "R1.geojson");
                         log.info("生产R1.mbtiles  end");
 
                         //生产R21mbtiles
                         log.info("生产R21.mbtiles  start");
                         execute("tippecanoe -o " + path + "R21.mbtiles " +
-                                "-Z 10 -z 17 -pk -pf -S 10 -y Kind -y PathName -y Width -y Direction -y Kind_Level " +
+                                "-Z " + projectMoudle.getR21ZoomLevel().get(0) + " -z " + projectMoudle.getR21ZoomLevel().get(1)
+                                + " -pk -pf -S 10 -y Kind -y PathName -y Width -y Direction -y Kind_Level " +
                                 path + "R21.geojson");
                         log.info("生产R21.mbtiles  end");
 
                         //生产R22.mbtiles
                         log.info("生产R22.mbtiles  start");
                         execute("tippecanoe -o " + path + "R22.mbtiles " +
-                                "-Z 12 -z 17 -pk -pf -S 10 -y Kind -y PathName -y Width -y Direction -y Kind_Level " +
+                                "-Z " + projectMoudle.getR22ZoomLevel().get(0) + " -z " + projectMoudle.getR22ZoomLevel().get(1)
+                                + " -pk -pf -S 10 -y Kind -y PathName -y Width -y Direction -y Kind_Level " +
                                 path + "R22.geojson");
                         log.info("生产R22.mbtiles  end");
 
                         //生产R3.mbtiles
                         log.info("生产R3.mbtiles  start");
                         execute("tippecanoe -o " + path + "R3.mbtiles " +
-                                "-Z 15 -z 17 -pk -pf -S 10 -y Kind -y PathName -y Width -y Direction -y Kind_Level " +
+                                "-Z " + projectMoudle.getR3ZoomLevel().get(0) + " -z " + projectMoudle.getR3ZoomLevel().get(1)
+                                + " -pk -pf -S 10 -y Kind -y PathName -y Width -y Direction -y Kind_Level " +
                                 path + "R3.geojson");
                         log.info("生产R3.mbtiles  end");
 
                         //生产POI.mbtiles
                         log.info("生产POI.mbtiles  start");
                         execute("tippecanoe -o " + path + "POI.mbtiles " +
-                                "-Z 10 -z 17 -y Kind -y Display_x -y Display_y -y Name -y AdminCode " +
+                                "-Z " + projectMoudle.getPoiZoomLevel().get(0) + " -z " + projectMoudle.getPoiZoomLevel().get(1)
+                                + " -y Kind -y Display_x -y Display_y -y Name -y AdminCode " +
                                 path + "POI.geojson");
                         log.info("生产POI.mbtiles  end");
 
                         //生产Buildings.mbtiles
                         log.info("生产Buildings.mbtiles  start");
                         execute("tippecanoe -o " + path + "Buildings.mbtiles " +
-                                "-Z 15 -z 17 " +
+                                "-Z " + projectMoudle.getBuildingZoomLevel().get(0) + " -z " + projectMoudle.getBuildingZoomLevel().get(1) + " " +
                                 path + "Building.geojson");
                         log.info("生产Buildings.mbtiles  end");
 
                         //生产Residential.mbtiles
                         log.info("生产Residential.mbtiles  start");
                         execute("tippecanoe -o " + path + "Residential.mbtiles " +
-                                "-Z 15 -z 17 " +
+                                "-Z " + projectMoudle.getResidentialZoomLevel().get(0) + " -z " + projectMoudle.getResidentialZoomLevel().get(1) + " " +
                                 path + "Residential.geojson");
                         log.info("生产Residential.mbtiles  end");
 
                         //生产Hamlet.mbtiles
                         log.info("生产Hamlet.mbtiles  start");
                         execute("tippecanoe -o " + path + "Hamlet.mbtiles " +
-                                "-Z 5 -z 10 " +
+                                "-Z " + projectMoudle.getHamletZoomLevel().get(0) + " -z " + projectMoudle.getHamletZoomLevel().get(1) + " " +
                                 path + "Hamlet.geojson");
                         log.info("生产Hamlet.mbtiles  end");
 
                         //生产T.mbtiles
                         log.info("生产T.mbtiles  start");
                         execute("tippecanoe -o " + path + "T.mbtiles " +
-                                "-Z 5 -z 17 -pk -y Kind -y Name -y AdminCode -y ID -y Class " +
+                                "-Z " + projectMoudle.getTZoomLevel().get(0) + " -z " + projectMoudle.getTZoomLevel().get(1)
+                                + " -pk -y Kind -y Name -y AdminCode -y ID -y Class " +
                                 path + "T.geojson");
                         log.info("生产T.mbtiles  end");
 
                         //生产DT.mbtiles
                         log.info("生产DT.mbtiles  start");
                         execute("tippecanoe -o " + path + "DT.mbtiles " +
-                                "-Z 5 -z 7 " +
+                                "-Z " + projectMoudle.getDtZoomLevel().get(0) + " -z " + projectMoudle.getDtZoomLevel().get(1) + " " +
                                 path + "DT.geojson");
                         log.info("生产DT.mbtiles  end");
 
                         //生产BP.mbtiles
                         log.info("生产BP.mbtiles  start");
                         execute("tippecanoe -o " + path + "BP.mbtiles " +
-                                "-Z 5 -z 17 -pk -pf -S 10 " +
+                                "-Z " + projectMoudle.getBpZoomLevel().get(0) + " -z " + projectMoudle.getBpZoomLevel().get(1) + " -pk -pf -S 10 " +
                                 path + "BP.geojson");
                         log.info("生产BP.mbtiles  end");
 
                         //生产D.mbtiles
                         log.info("生产D.mbtiles  start");
                         execute("tippecanoe -o " + path + "D.mbtiles " +
-                                "-Z 5 -z 17 -pk -pf -S 10 " +
+                                "-Z " + projectMoudle.getDZoomLevel().get(0) + " -z " + projectMoudle.getDZoomLevel().get(1) + " -pk -pf -S 10 " +
                                 path + "D.geojson");
                         log.info("生产D.mbtiles  end");
                         log.info("mbtiles生产完毕！");
