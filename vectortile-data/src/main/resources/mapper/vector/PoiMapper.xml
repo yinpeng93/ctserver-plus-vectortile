@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.kedacom.vector.mapper.PoiMapper">
+    <resultMap id="BaseResultMap" type="com.kedacom.vector.entity.Poi">
+        <result column="gid" property="gid"></result>
+        <result column="mapid" property="mapid"></result>
+        <result column="kind" property="kind"></result>
+        <result column="zipcode" property="zipcode"></result>
+        <result column="telephone" property="telephone"></result>
+        <result column="admincode" property="admincode"></result>
+        <result column="display_x" property="displayX"></result>
+        <result column="dispaly_y" property="dispalyY"></result>
+        <result column="poi_id" property="poiId"></result>
+        <result column="importance" property="importance"></result>
+        <result column="vadmincode" property="vadmincode"></result>
+        <result column="chaincode" property="chaincode"></result>
+        <result column="prior_auth" property="priorAuth"></result>
+        <result column="linkid" property="linkid"></result>
+        <result column="side" property="side"></result>
+        <result column="pid" property="pid"></result>
+        <result column="tel_type" property="telType"></result>
+        <result column="food_type" property="foodType"></result>
+        <result column="airpt_code" property="airptCode"></result>
+        <result column="open_24h" property="open24h"></result>
+        <result column="data_src" property="dataSrc"></result>
+        <result column="mesh_id" property="meshId"></result>
+        <result column="poi_flag" property="poiFlag"></result>
+        <result column="rating" property="rating"></result>
+        <result column="tg_type" property="tgType"></result>
+        <result column="accessflag" property="accessflag"></result>
+        <result column="truckflag" property="truckflag"></result>
+        <result column="spvenue" property="spvenue"></result>
+        <result column="gate" property="gate"></result>
+        <result column="geom" property="geom" javaType="com.kedacom.vector.entity.GeometryEntity" typeHandler="com.kedacom.vector.handler.CustomTypeHandler"></result>
+        <result column="featid" property="featid"></result>
+        <result column="nametype" property="nametype"></result>
+        <result column="name" property="name"></result>
+        <result column="py" property="py"></result>
+        <result column="keyword" property="keyword"></result>
+        <result column="seq_nm" property="seqNm"></result>
+        <result column="signnumflg" property="signnumflg"></result>
+        <result column="signnametp" property="signnametp"></result>
+        <result column="language" property="language"></result>
+        <result column="nameflag" property="nameflag"></result>
+    </resultMap>
+
+    <select id="queryPoiList" resultMap="BaseResultMap">
+        select
+            gid,
+            mapid,
+            kind,
+            zipcode,
+            telephone,
+            admincode,
+            display_x,
+            dispaly_y,
+            poi_id,
+            importance,
+            vadmincode,
+            chaincode,
+            prior_auth,
+            linkid,
+            side,
+            pid,
+            tel_type,
+            food_type,
+            airpt_code,
+            open_24h,
+            data_src,
+            mesh_id,
+            poi_flag,
+            rating,
+            tg_type,
+            accessflag,
+            truckflag,
+            spvenue,
+            gate,
+            st_asgeojson(geom) as geom,
+            featid,
+            nametype,
+            name,
+            py,
+            keyword,
+            seq_nm,
+            signnumflg,
+            signnametp,
+            language,
+            nameflag
+         from ${tableName} order by pid limit ${pageSize} offset ${offset}
+    </select>
+
+    <insert id="insertPoiList">
+        insert into ${toTableName} select * from ${fromTableName} where admincode like #{prefixAdminCode} || '%'
+    </insert>
+
+    <delete id="deletePoiList">
+        delete from ${tableName} where admincode like #{prefixAdminCode} || '%'
+    </delete>
+
+    <select id="countPoi" resultType="java.lang.Integer" parameterType="java.lang.String">
+        select count(1) from ${tableName}
+    </select>
+</mapper>

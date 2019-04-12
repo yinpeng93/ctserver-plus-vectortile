@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.kedacom.vector.mapper.ProvinceMapper">
+    <resultMap id="BaseResultMap" type="com.kedacom.vector.entity.Province">
+        <id column="id" property="id"></id>
+        <result column="name" property="name"></result>
+        <result column="pinyin" property="pinyin"></result>
+        <result column="admin_id" property="adminId"></result>
+        <result column="relation_names" property="relationNames"></result>
+        <result column="relation_admin_id" property="relationAdminId"></result>
+    </resultMap>
+
+    <resultMap id="provinceResultMap" type="com.kedacom.vector.dto.ProvinceDTO">
+        <result column="name" property="name"></result>
+        <result column="admin_id" property="adminId"></result>
+    </resultMap>
+
+    <select id="queryProvinceByPinyin" resultMap="BaseResultMap" parameterType="java.lang.String">
+        select * from province where pinyin = #{pinyin};
+    </select>
+
+    <select id="queryAllProvince" resultMap="provinceResultMap">
+        select admin_id,name from province order by id;
+    </select>
+</mapper>

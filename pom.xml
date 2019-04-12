@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <parent>
+        <groupId>com.kedacom.ctsp</groupId>
+        <artifactId>commons-boot-framework</artifactId>
+        <version>3.0.6.5</version>
+    </parent>
+    <modelVersion>4.0.0</modelVersion>
+    <packaging>pom</packaging>
+    <modules>
+        <module>vectortile-web</module>
+        <module>vectortile-data</module>
+        <module>vectortile-common</module>
+    </modules>
+
+    <groupId>com.kedacom</groupId>
+    <artifactId>ctserver-plus-vectortile</artifactId>
+    <version>1.0-SNAPSHOT</version>
+
+    <!--全局变量配置-->
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+        <java.version>1.8</java.version>
+        <golobal.version>1.0.0</golobal.version>
+    </properties>
+
+    <repositories>
+        <repository>
+            <id>ctsp</id>
+            <name>ctsp</name>
+            <url>http://nexus.ctsp.kedacom.com/content/groups/public/</url>
+            <releases>
+                <enabled>true</enabled>
+            </releases>
+            <snapshots>
+                <enabled>true</enabled>
+            </snapshots>
+        </repository>
+        <repository>
+            <id>alibab</id>
+            <name>alibaba</name>
+            <url>http://maven.aliyun.com/nexus/content/groups/public/</url>
+        </repository>
+    </repositories>
+</project>

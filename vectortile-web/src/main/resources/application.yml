@@ -1,0 +1,43 @@
+path:
+  prefix: /data/vectortile/
+
+#数据库配置
+spring:
+  datasource:
+    type: com.alibaba.druid.pool.DruidDataSource
+    driverClassName: org.postgresql.Driver
+    url: jdbc:postgresql://10.79.1.81:5432/vectortile
+    username: ctserver
+    password: 123456
+    druid:
+      #初始化连接大小
+      initial-size: 8
+      #最小空闲连接数
+      min-idle: 5
+      #最大连接数
+      max-active: 10
+      #查询超时时间
+      query-timeout: 6000
+      #事务查询超时时间
+      transaction-query-timeout: 6000
+      #关闭空闲连接超时时间
+      remove-abandoned-timeout: 1800
+      filters: stat,config
+mybatis-plus:
+  mapper-locations: classpath:/mapper/vector/*Mapper.xml
+  type-aliases-package: com.kedacom.vector.entity
+  global-config:
+    id-type: 0
+    dbType: postgresql
+    key-generator: com.baomidou.mybatisplus.incrementer.PostgreKeyGenerator
+    db-column-underline: true
+    refresh-mapper: false
+    capital-mode: true
+    field-strategy: 2
+  configuration:
+    map-underscore-to-camel-case: true
+    cache-enabled: false
+logging:
+  level: debug
+server:
+  port: 8081

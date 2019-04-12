@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.kedacom.vector.mapper.ShiroUserMapper">
+    <resultMap id="BaseResultMap" type="com.kedacom.vector.entity.ShiroUser">
+        <id column="id" property="id"></id>
+        <result column="username" property="username"></result>
+        <result column="password" property="password"></result>
+        <result column="rolename" property="rolename"></result>
+        <result column="locked" property="locked"></result>
+    </resultMap>
+
+    <select id="queryUserByUsername" resultMap="BaseResultMap" parameterType="java.lang.String">
+        select * from shiro_user where username = #{username}
+    </select>
+</mapper>

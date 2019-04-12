@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.kedacom.vector.mapper.ResidentialMapper">
+    <resultMap id="BaseResultMap" type="com.kedacom.vector.entity.Residential">
+        <result column="gid" property="gid"></result>
+        <result column="id" property="id"></result>
+        <result column="poi_pid" property="poiPid"></result>
+        <result column="kind_code" property="kindCode"></result>
+        <result column="name" property="name"></result>
+        <result column="name_py" property="namePy"></result>
+        <result column="city_name" property="cityName"></result>
+        <result column="geom" property="geom" javaType="com.kedacom.vector.entity.GeometryEntity" typeHandler="com.kedacom.vector.handler.CustomTypeHandler"></result>
+    </resultMap>
+    <select id="queryResidentialList" parameterType="java.util.List" resultMap="BaseResultMap">
+        select
+            gid,
+            id,
+            poi_pid,
+            kind_code,
+            name,
+            name_py,
+            city_name,
+            st_asgeojson(geom) as geom
+         from residential_polygon_region where
+         <foreach collection="list" item="cityName" separator=" or ">
+             city_name like #{cityName} || '%'
+         </foreach>
+    </select>
+</mapper>

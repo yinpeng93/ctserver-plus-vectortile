@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.kedacom.vector.mapper.BuildingMapper">
+    <resultMap id="BaseResultMap" type="com.kedacom.vector.entity.Building">
+        <result column="gid" property="gid"></result>
+        <result column="mapid" property="mapid"></result>
+        <result column="id" property="id"></result>
+        <result column="class" property="level"></result>
+        <result column="show" property="show"></result>
+        <result column="landmark3d" property="landmark3d"></result>
+        <result column="height" property="height"></result>
+        <result column="carto_id" property="cartoId"></result>
+        <result column="admincode" property="admincode"></result>
+        <result column="name" property="name"></result>
+        <result column="name_id" property="nameId"></result>
+        <result column="src_flag" property="srcFlag"></result>
+        <result column="geom" property="geom" javaType="com.kedacom.vector.entity.GeometryEntity" typeHandler="com.kedacom.vector.handler.CustomTypeHandler"></result>
+    </resultMap>
+    <select id="queryBuildingListByPage" parameterType="java.lang.String" resultMap="BaseResultMap">
+        select
+            gid,
+            mapid,
+            id,
+            class,
+            show,
+            landmark3d,
+            height,
+            carto_id,
+            admincode,
+            name,
+            name_id,
+            src_flag,
+            st_asgeojson(geom) as geom
+         from building_region
+         where admincode like #{prefixAdminCode} || '%'
+         order by gid limit ${pageSize} offset ${offset}
+    </select>
+
+    <select id="queryBuildingList" parameterType="java.lang.String" resultMap="BaseResultMap">
+        select
+            gid,
+            mapid,
+            id,
+            class,
+            show,
+            landmark3d,
+            height,
+            carto_id,
+            admincode,
+            name,
+            name_id,
+            src_flag,
+            st_asgeojson(geom) as geom
+         from building_region
+         where admincode like #{prefixAdminCode} || '%'
+    </select>
+
+    <select id="countBuilding" resultType="java.lang.Integer">
+        select count(1) from building_region
+        where
+    </select>
+</mapper>

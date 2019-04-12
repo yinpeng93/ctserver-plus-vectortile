@@ -1,0 +1,454 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.kedacom.vector.mapper.RoadMapper">
+    <resultMap id="BaseResultMap" type="com.kedacom.vector.entity.Road">
+        <result column="gid" property="gid"></result>
+        <result column="mapid" property="mapid"></result>
+        <result column="id" property="id"></result>
+        <result column="kind_num" property="kindNum"></result>
+        <result column="kind" property="kind"></result>
+        <result column="width" property="width"></result>
+        <result column="direction" property="direction"></result>
+        <result column="toll" property="toll"></result>
+        <result column="const_st" property="constSt"></result>
+        <result column="unconcrid" property="unconcrid"></result>
+        <result column="snodeid" property="snodeid"></result>
+        <result column="enodeid" property="enodeid"></result>
+        <result column="funcclass" property="funcclass"></result>
+        <result column="length" property="length"></result>
+        <result column="detailcity" property="detailcity"></result>
+        <result column="through" property="through"></result>
+        <result column="unthrucrid" property="unthrucrid"></result>
+        <result column="ownership" property="ownership"></result>
+        <result column="road_cond" property="roadCond"></result>
+        <result column="special" property="special"></result>
+        <result column="admincodel" property="admincodel"></result>
+        <result column="admincoder" property="admincoder"></result>
+        <result column="uflag" property="uflag"></result>
+        <result column="onewaycrid" property="onewaycrid"></result>
+        <result column="accesscrid" property="accesscrid"></result>
+        <result column="speedclass" property="speedclass"></result>
+        <result column="lanenums2e" property="lanenums2e"></result>
+        <result column="lanenume2s" property="lanenume2s"></result>
+        <result column="lanenum" property="lanenum"></result>
+        <result column="vehcl_type" property="vehclType"></result>
+        <result column="elevated" property="elevated"></result>
+        <result column="structure" property="structure"></result>
+        <result column="usefeecrid" property="usefeecrid"></result>
+        <result column="usefeetype" property="usefeetype"></result>
+        <result column="spdlmts2e" property="spdlmts2e"></result>
+        <result column="spdlmte2s" property="spdlmte2s"></result>
+        <result column="spdsrcs2e" property="spdsrcs2e"></result>
+        <result column="spdsrce2s" property="spdsrce2s"></result>
+        <result column="dc_type" property="dcType"></result>
+        <result column="nopasscrid" property="nopasscrid"></result>
+        <result column="outbancrid" property="outbancrid"></result>
+        <result column="numbancrid" property="numbancrid"></result>
+        <result column="parkflag" property="parkflag"></result>
+        <result column="phylanes2e" property="phylanes2e"></result>
+        <result column="phtlanee2s" property="phtlanee2s"></result>
+        <result column="geom" property="geom" javaType="com.kedacom.vector.entity.GeometryEntity" typeHandler="com.kedacom.vector.handler.CustomTypeHandler"></result>
+        <result column="route_id" property="routeId"></result>
+        <result column="route_kind" property="routeKind"></result>
+        <result column="pathname" property="pathname"></result>
+        <result column="pathpy" property="pathpy"></result>
+        <result column="prename" property="prename"></result>
+        <result column="prepy" property="prepy"></result>
+        <result column="basename" property="basename"></result>
+        <result column="basepy" property="basepy"></result>
+        <result column="sttpname" property="sttpname"></result>
+        <result column="sttppy" property="sttppy"></result>
+        <result column="surname" property="surname"></result>
+        <result column="surpy" property="surpy"></result>
+        <result column="wavname" property="wavname"></result>
+        <result column="language" property="language"></result>
+        <result column="sttploc" property="sttploc"></result>
+    </resultMap>
+
+    <select id="queryRoadList" resultMap="BaseResultMap">
+      select
+        gid,
+        mapid,
+        id,
+        kind_num,
+        kind,
+        width,
+        direction,
+        toll,
+        const_st,
+        unconcrid,
+        snodeid,
+        enodeid,
+        funcclass,
+        length,
+        detailcity,
+        through,
+        unthrucrid,
+        ownership,
+        road_cond,
+        special,
+        admincodel,
+        admincoder,
+        uflag,
+        onewaycrid,
+        accesscrid,
+        speedclass,
+        lanenums2e,
+        lanenume2s,
+        lanenum,
+        vehcl_type,
+        elevated,
+        structure,
+        usefeecrid,
+        usefeetype,
+        spdlmts2e,
+        spdlmte2s,
+        spdsrcs2e,
+        spdsrce2s,
+        dc_type,
+        nopasscrid,
+        outbancrid,
+        numbancrid,
+        parkflag,
+        phylanes2e,
+        phtlanee2s,
+        st_asgeojson(geom) as geom,
+        route_id,
+        route_kind,
+        pathname,
+        pathpy,
+        prename,
+        prepy,
+        basename,
+        basepy,
+        sttpname,
+        sttppy,
+        surname,
+        surpy,
+        wavname,
+        language,
+        sttploc
+      from
+        ${tableName}
+      order by
+        gid limit ${pageSize} offset ${offset}
+    </select>
+
+    <select id="queryR3List" resultMap="BaseResultMap">
+      select
+        gid,
+        mapid,
+        id,
+        kind_num,
+        kind,
+        width,
+        direction,
+        toll,
+        const_st,
+        unconcrid,
+        snodeid,
+        enodeid,
+        funcclass,
+        length,
+        detailcity,
+        through,
+        unthrucrid,
+        ownership,
+        road_cond,
+        special,
+        admincodel,
+        admincoder,
+        uflag,
+        onewaycrid,
+        accesscrid,
+        speedclass,
+        lanenums2e,
+        lanenume2s,
+        lanenum,
+        vehcl_type,
+        elevated,
+        structure,
+        usefeecrid,
+        usefeetype,
+        spdlmts2e,
+        spdlmte2s,
+        spdsrcs2e,
+        spdsrce2s,
+        dc_type,
+        nopasscrid,
+        outbancrid,
+        numbancrid,
+        parkflag,
+        phylanes2e,
+        phtlanee2s,
+        st_asgeojson(geom) as geom,
+        route_id,
+        route_kind,
+        pathname,
+        pathpy,
+        prename,
+        prepy,
+        basename,
+        basepy,
+        sttpname,
+        sttppy,
+        surname,
+        surpy,
+        wavname,
+        language,
+        sttploc
+      from
+        ${tableName}
+      where
+        kind like '09%' or kind LIKE '0a%' or kind like '0b%' or kind LIKE '0c%' or kind LIKE '0d%'
+      order by
+        gid,route_id
+      limit ${pageSize} offset ${offset}
+    </select>
+
+    <select id="queryR22List" resultMap="BaseResultMap">
+      select
+        gid,
+        mapid,
+        id,
+        kind_num,
+        kind,
+        width,
+        direction,
+        toll,
+        const_st,
+        unconcrid,
+        snodeid,
+        enodeid,
+        funcclass,
+        length,
+        detailcity,
+        through,
+        unthrucrid,
+        ownership,
+        road_cond,
+        special,
+        admincodel,
+        admincoder,
+        uflag,
+        onewaycrid,
+        accesscrid,
+        speedclass,
+        lanenums2e,
+        lanenume2s,
+        lanenum,
+        vehcl_type,
+        elevated,
+        structure,
+        usefeecrid,
+        usefeetype,
+        spdlmts2e,
+        spdlmte2s,
+        spdsrcs2e,
+        spdsrce2s,
+        dc_type,
+        nopasscrid,
+        outbancrid,
+        numbancrid,
+        parkflag,
+        phylanes2e,
+        phtlanee2s,
+        st_asgeojson(geom) as geom,
+        route_id,
+        route_kind,
+        pathname,
+        pathpy,
+        prename,
+        prepy,
+        basename,
+        basepy,
+        sttpname,
+        sttppy,
+        surname,
+        surpy,
+        wavname,
+        language,
+        sttploc
+      from
+        ${tableName}
+      where
+        kind LIKE '06%' or kind like '08%'
+      order by
+        gid,route_id
+      limit ${pageSize} offset ${offset}
+    </select>
+
+    <select id="queryR21List" resultMap="BaseResultMap">
+      select
+        gid,
+        mapid,
+        id,
+        kind_num,
+        kind,
+        width,
+        direction,
+        toll,
+        const_st,
+        unconcrid,
+        snodeid,
+        enodeid,
+        funcclass,
+        length,
+        detailcity,
+        through,
+        unthrucrid,
+        ownership,
+        road_cond,
+        special,
+        admincodel,
+        admincoder,
+        uflag,
+        onewaycrid,
+        accesscrid,
+        speedclass,
+        lanenums2e,
+        lanenume2s,
+        lanenum,
+        vehcl_type,
+        elevated,
+        structure,
+        usefeecrid,
+        usefeetype,
+        spdlmts2e,
+        spdlmte2s,
+        spdsrcs2e,
+        spdsrce2s,
+        dc_type,
+        nopasscrid,
+        outbancrid,
+        numbancrid,
+        parkflag,
+        phylanes2e,
+        phtlanee2s,
+        st_asgeojson(geom) as geom,
+        route_id,
+        route_kind,
+        pathname,
+        pathpy,
+        prename,
+        prepy,
+        basename,
+        basepy,
+        sttpname,
+        sttppy,
+        surname,
+        surpy,
+        wavname,
+        language,
+        sttploc
+      from
+        ${tableName}
+      where
+        kind LIKE '03%' or kind like '04%'
+      order by
+        gid,route_id
+      limit ${pageSize} offset ${offset}
+    </select>
+
+    <select id="queryR1List" resultMap="BaseResultMap">
+      select
+        gid,
+        mapid,
+        id,
+        kind_num,
+        kind,
+        width,
+        direction,
+        toll,
+        const_st,
+        unconcrid,
+        snodeid,
+        enodeid,
+        funcclass,
+        length,
+        detailcity,
+        through,
+        unthrucrid,
+        ownership,
+        road_cond,
+        special,
+        admincodel,
+        admincoder,
+        uflag,
+        onewaycrid,
+        accesscrid,
+        speedclass,
+        lanenums2e,
+        lanenume2s,
+        lanenum,
+        vehcl_type,
+        elevated,
+        structure,
+        usefeecrid,
+        usefeetype,
+        spdlmts2e,
+        spdlmte2s,
+        spdsrcs2e,
+        spdsrce2s,
+        dc_type,
+        nopasscrid,
+        outbancrid,
+        numbancrid,
+        parkflag,
+        phylanes2e,
+        phtlanee2s,
+        st_asgeojson(geom) as geom,
+        route_id,
+        route_kind,
+        pathname,
+        pathpy,
+        prename,
+        prepy,
+        basename,
+        basepy,
+        sttpname,
+        sttppy,
+        surname,
+        surpy,
+        wavname,
+        language,
+        sttploc
+      from
+        ${tableName}
+      where
+        kind LIKE '00%' or kind like '01%' or kind LIKE '02%'
+      order by
+        gid,route_id
+      limit ${pageSize} offset ${offset}
+    </select>
+
+    <select id="countRoad" parameterType="java.lang.String" resultType="java.lang.Integer">
+        select count(1) from ${tableName}
+    </select>
+
+    <select id="countR1" parameterType="java.lang.String" resultType="java.lang.Integer">
+        select count(1) from ${tableName} where kind LIKE '00%' or kind like '01%' or kind LIKE '02%'
+    </select>
+
+    <select id="countR21" parameterType="java.lang.String" resultType="java.lang.Integer">
+        select count(1) from ${tableName} where kind LIKE '03%' or kind like '04%'
+    </select>
+
+    <select id="countR22" parameterType="java.lang.String" resultType="java.lang.Integer">
+        select count(1) from ${tableName} where kind LIKE '06%' or kind like '08%'
+    </select>
+
+    <select id="countR3" parameterType="java.lang.String" resultType="java.lang.Integer">
+        select count(1) from ${tableName} where  kind like '09%' or kind LIKE '0a%' or kind like '0b%' or kind LIKE '0c%' or kind LIKE '0d%'
+    </select>
+
+    <insert id="insertRoadList">
+        insert into ${toTableName} select * from ${fromTableName} where admincoder like #{prefixAdminCode} || '%'
+        or admincodel like #{prefixAdminCode} || '%'
+    </insert>
+
+    <delete id="deleteRoadList">
+        delete from ${tableName} where (admincoder like #{prefixAdminCodeDelete} || '%' and admincodel not like #{prefixAdminCode})
+        or (admincodel like #{prefixAdminCodeDelete} || '%' and admincoder not like #{prefixAdminCode})
+    </delete>
+</mapper>

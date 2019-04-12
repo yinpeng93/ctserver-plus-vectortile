@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.kedacom.vector.mapper.TextMapper">
+    <resultMap id="BaseResultMap" type="com.kedacom.vector.entity.Text">
+        <result column="gid" property="gid"></result>
+        <result column="mapid" property="mapid"></result>
+        <result column="id" property="id"></result>
+        <result column="kind" property="kind"></result>
+        <result column="class" property="level"></result>
+        <result column="admincode" property="admincode"></result>
+        <result column="geom" property="geom" javaType="com.kedacom.vector.entity.GeometryEntity" typeHandler="com.kedacom.vector.handler.CustomTypeHandler"></result>
+        <result column="featid" property="featid"></result>
+        <result column="nametype" property="nametype"></result>
+        <result column="name" property="name"></result>
+        <result column="py" property="py"></result>
+        <result column="keyword" property="keyword"></result>
+        <result column="seq_nm" property="seqNm"></result>
+        <result column="signnumflg" property="signnumflg"></result>
+        <result column="signnumtp" property="signnumtp"></result>
+        <result column="language" property="language"></result>
+        <result column="nameflag" property="nameflag"></result>
+    </resultMap>
+
+    <select id="queryTextList" resultMap="BaseResultMap" parameterType="java.lang.String">
+        select
+            gid,
+            mapid,
+            id,
+            kind,
+            class,
+            admincode,
+            st_asgeojson(geom) as geom,
+            featid,
+            nametype,
+            name,
+            py,
+            keyword,
+            seq_nm,
+            signnumflg,
+            signnumtp,
+            language,
+            nameflag
+        from
+            ${tableName}
+    </select>
+
+    <insert id="insertTextList">
+        insert into ${toTableName} select * from ${fromTableName} where admincode like #{prefixAdminCode} || '%'
+    </insert>
+
+    <delete id="deleteTextList">
+        delete from ${tableName} where admincode like #{prefixAdminCode} || '%'
+    </delete>
+</mapper>

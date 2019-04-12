@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.kedacom.vector.mapper.ResourceMapper">
+    <resultMap id="BaseResultMap" type="com.kedacom.vector.entity.Resource">
+        <id column="id" property="id"></id>
+        <result column="data_scope" property="dataScope"></result>
+        <result column="coordinate_system" property="coordinateSystem"></result>
+        <result column="status" property="status"></result>
+    </resultMap>
+</mapper>
