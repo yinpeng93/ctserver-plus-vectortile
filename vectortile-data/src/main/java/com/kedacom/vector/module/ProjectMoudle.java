@@ -53,7 +53,7 @@ public class ProjectMoudle {
      * 是否生产mbtiles,0 不生产mbtiles，只生产geojson     1 生产mbtiles和geojson
      */
     @NotNull(message = "mode为空，必须填写mode")
-    private Integer mode;
+    private Integer mode = 1;
 
     @Size(min = 2,max = 2,message = "r1ZoomLevel是r1的区间，由两个integer类型值框定区间")
     private List r1ZoomLevel = Arrays.asList(5,19);

@@ -4,6 +4,7 @@ import com.baomidou.mybatisplus.plugins.Page;
 import com.baomidou.mybatisplus.service.IService;
 import com.kedacom.vector.entity.Project;
 
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -18,4 +19,8 @@ public interface IProjectService extends IService<Project> {
     Project queryProjectByUsernameAndProjectName(String username, String projectName);
 
     void updateStatus(Long resourceId,Integer status);
+
+    void deleteProject(String projectId);
+
+    List<Project> queryProjectList(Long resourceId);
 }

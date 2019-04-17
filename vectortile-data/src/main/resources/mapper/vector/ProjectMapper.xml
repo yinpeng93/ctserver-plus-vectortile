@@ -31,6 +31,15 @@
         </where>
     </select>
 
+    <select id="queryProjectListByResourceId" parameterType="java.lang.Long" resultMap="BaseResultMap">
+        select
+          *
+        from
+          project
+        where project_id in(select project_id from project_resource where resource_id = ${resourceId})
+    </select>
+
+
     <update id="updateStatus">
         update project set status = ${status} where project_id in (select project_id from project_resource where resource_id = ${resourceId})
     </update>

@@ -17,4 +17,6 @@ public interface ProjectMapper extends BaseMapper<Project> {
     List<Project> queryProjectList(Page<Project> page, Map<String, Object> paramMap);
 
     void updateStatus(@Param("resourceId") Long resourceId, @Param("status") Integer status);
+
+    List<Project> queryProjectListByResourceId(@Param("resourceId")Long resourceId);
 }
