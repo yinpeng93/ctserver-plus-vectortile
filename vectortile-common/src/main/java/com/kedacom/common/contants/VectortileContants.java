@@ -17,4 +17,6 @@ public class VectortileContants {
     public static final String ROAD_SUFFIX = "_r";
 
     public static final String TEXT_SUFFIX = "_t";
+
+    public static final String BACKGROUND_POLYLINE_SUFFIX = "_bl";
 }

@@ -200,5 +200,6 @@ public class Road extends BaseEntity implements Serializable {
     @JSONField(name = "StTpLoc")
     private String sttploc;
 
-
+    @JSONField(name = "Kind_Level")
+    private String kindLevel;
 }

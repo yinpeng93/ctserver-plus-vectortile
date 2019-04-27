@@ -51,4 +51,17 @@ public interface IRoadService extends IService<Road> {
     Integer countR34(String tableName);
 
 
+    /**
+     * 查询匝道数据
+     * @param tableName
+     * @return
+     */
+    List<Road> queryRZDList(String tableName);
+
+    /**
+     * 查询立交数据
+     * @param tableName
+     * @return
+     */
+    List<Road> queryRLJList(String tableName);
 }

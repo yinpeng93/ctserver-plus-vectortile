@@ -71,4 +71,8 @@ public interface RoadMapper extends BaseMapper<Road> {
     Integer countR33(@Param("tableName") String tableName);
 
     Integer countR34(@Param("tableName") String tableName);
+
+    List<Road> queryRZDList(@Param("tableName") String tableName);
+
+    List<Road> queryRLJList(@Param("tableName") String tableName);
 }

@@ -9,10 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 import static com.kedacom.common.contants.VectortileContants.*;
 
@@ -50,14 +47,15 @@ public class DataCleaningController {
 
     /**
      * 整理每个省的数据
-     * @param pinYin 省份拼音
      * @return
      */
     @RequestMapping("/sortData")
-    public ResponseMessage sortData(String pinYin){
+    public ResponseMessage sortData(){
+
+
 
         List<Province> provinceList = null;
-        Long start = System.currentTimeMillis();
+
         try {
             provinceList = provinceService.selectList(Condition.create());
         } catch (Exception e) {
@@ -66,59 +64,67 @@ public class DataCleaningController {
         }
         provinceList.forEach(province -> provinceMap.put(province.getPinyin(),province.getAdminId().substring(0,2)));
 
+        Set<String> pinYinSet = provinceMap.keySet();
+        pinYinSet.remove("taiwan");
+        for (String pinYin :
+                pinYinSet) {
+            Long start = System.currentTimeMillis();
+            Province province = null;
+            try {
+                province = provinceService.queryProvinceByPinyin(pinYin);
+            } catch (Exception e) {
+                log.error("根据拼音查询省份信息失败！",e);
+                return ResponseMessage.error("根据拼音查询省份信息失败！");
+            }
+            List<String> provinceNames = Arrays.asList(province.getRelationNames().split(","));
+            try {
+                sortRoadData(pinYin,provinceNames);
+            } catch (Exception e) {
+                log.error("整理" + pinYin + "：road数据失败！",e);
+                return ResponseMessage.error("整理" + pinYin + "：road数据失败！",e);
+            }
 
-        Province province = null;
-        try {
-            province = provinceService.queryProvinceByPinyin(pinYin);
-        } catch (Exception e) {
-            log.error("根据拼音查询省份信息失败！",e);
-            return ResponseMessage.error("根据拼音查询省份信息失败！");
-        }
-        List<String> provinceNames = Arrays.asList(province.getRelationNames().split(","));
+            //        try {
+//            sortHamletData(pinYin,provinceNames);
+//        } catch (Exception e) {
+//            log.error("整理" + pinYin + "：hamlet数据失败！",e);
+//            return ResponseMessage.error("整理" + pinYin + "：hamlet数据失败！",e);
+//        }
+//
+//        try {
+//            sortPoiData(pinYin,provinceNames);
+//        } catch (Exception e) {
+//            log.error("整理" + pinYin + "：poi数据失败！",e);
+//            return ResponseMessage.error("整理" + pinYin + "：poi数据失败！",e);
+//        }
 
-        try {
-            sortHamletData(pinYin,provinceNames);
-        } catch (Exception e) {
-            log.error("整理" + pinYin + "：hamlet数据失败！",e);
-            return ResponseMessage.error("整理" + pinYin + "：hamlet数据失败！",e);
-        }
 
-        try {
-            sortPoiData(pinYin,provinceNames);
-        } catch (Exception e) {
-            log.error("整理" + pinYin + "：poi数据失败！",e);
-            return ResponseMessage.error("整理" + pinYin + "：poi数据失败！",e);
-        }
 
-        try {
-            sortRoadData(pinYin,provinceNames);
-        } catch (Exception e) {
-            log.error("整理" + pinYin + "：road数据失败！",e);
-            return ResponseMessage.error("整理" + pinYin + "：road数据失败！",e);
-        }
+//        try {
+//            sortTextData(pinYin,provinceNames);
+//        } catch (Exception e) {
+//            log.error("整理" + pinYin + "：road数据失败！",e);
+//            return ResponseMessage.error("整理" + pinYin + "：road数据失败！",e);
+//        }
+//
+//        try {
+//            sortBackgroundPolygon(pinYin,provinceNames);
+//        } catch (Exception e) {
+//            log.error("整理" + pinYin + "：background数据失败！",e);
+//            return ResponseMessage.error("整理" + pinYin + "：background数据失败！",e);
+//        }
+//
+//        try {
+//            sortDivision(pinYin,provinceNames);
+//        } catch (Exception e) {
+//            log.error("整理" + pinYin + "：division数据失败！",e);
+//            return ResponseMessage.error("整理" + pinYin + "：division数据失败！",e);
+//        }
 
-        try {
-            sortTextData(pinYin,provinceNames);
-        } catch (Exception e) {
-            log.error("整理" + pinYin + "：road数据失败！",e);
-            return ResponseMessage.error("整理" + pinYin + "：road数据失败！",e);
-        }
-
-        try {
-            sortBackgroundPolygon(pinYin,provinceNames);
-        } catch (Exception e) {
-            log.error("整理" + pinYin + "：background数据失败！",e);
-            return ResponseMessage.error("整理" + pinYin + "：background数据失败！",e);
+            Long end = System.currentTimeMillis();
+            log.info("整理" + pinYin + "数据总耗时：" + (end - start)/1000.0 + "s");
         }
 
-        try {
-            sortDivision(pinYin,provinceNames);
-        } catch (Exception e) {
-            log.error("整理" + pinYin + "：division数据失败！",e);
-            return ResponseMessage.error("整理" + pinYin + "：division数据失败！",e);
-        }
-        Long end = System.currentTimeMillis();
-        log.info("整理" + pinYin + "数据总耗时：" + (end - start)/1000.0 + "s");
         return ResponseMessage.ok("数据整理成功！");
     }
 

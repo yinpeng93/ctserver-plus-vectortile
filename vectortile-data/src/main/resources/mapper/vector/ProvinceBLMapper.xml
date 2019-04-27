@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.kedacom.vector.mapper.ProvinceBLMapper">
+    <resultMap id="BaseResultMap" type="com.kedacom.vector.entity.ProvinceBL">
+        <result column="gid" property="gid"></result>
+        <result column="mapid" property="mapid"></result>
+        <result column="id" property="id"></result>
+        <result column="kind" property="kind"></result>
+        <result column="snode_id" property="snodeId"></result>
+        <result column="enode_id" property="enodeId"></result>
+        <result column="rwcolor" property="rwcolor"></result>
+        <result column="admincode" property="admincode"></result>
+        <result column="geom" property="geom" javaType="com.kedacom.vector.entity.GeometryEntity" typeHandler="com.kedacom.vector.handler.CustomTypeHandler"></result>
+    </resultMap>
+    <select id="queryProvinceBLList" resultMap="BaseResultMap">
+        select
+            gid,
+            mapid,
+            id,
+            kind,
+            snode_id,
+            enode_id,
+            rwcolor,
+            admincode,
+            st_asgeojson(geom) as geom
+         from province_bl_polyline
+    </select>
+
+</mapper>

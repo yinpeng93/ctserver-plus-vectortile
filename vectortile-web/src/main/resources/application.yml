@@ -1,5 +1,7 @@
 path:
-  prefix: /data/vectortile/
+  prefix: E:\
+#  E:\
+  ##/data/vectortile/
 
 #数据库配置
 spring:

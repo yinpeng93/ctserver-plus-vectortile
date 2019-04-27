@@ -111,4 +111,14 @@ public class RoadServiceImpl extends ServiceImpl<RoadMapper, Road> implements IR
     public Integer countR34(String tableName) {
         return roadMapper.countR34(tableName);
     }
+
+    @Override
+    public List<Road> queryRZDList(String tableName) {
+        return roadMapper.queryRZDList(tableName);
+    }
+
+    @Override
+    public List<Road> queryRLJList(String tableName) {
+        return roadMapper.queryRLJList(tableName);
+    }
 }
