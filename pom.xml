@@ -16,7 +16,7 @@
     </modules>
 
     <groupId>com.kedacom</groupId>
-    <artifactId>ctserver-plus-vectortile</artifactId>
+    <artifactId>vectortile</artifactId>
     <version>1.0-SNAPSHOT</version>
 
     <!--全局变量配置-->
